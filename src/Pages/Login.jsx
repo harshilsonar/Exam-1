@@ -1,36 +1,38 @@
 import React, { useState } from "react";
-
 import styled from "styled-components";
 
-
 export const Login = () => {
-  const [email, setemail] = useState("");
-  const [password, setpassword] = useState("");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
 
-  const handleLogin = () =>
-  {
-    if(email === "" || password === "")
-      {
-        alert("Please fill in all fields");
-
-        }
-        else
-        {
-          alert("Login Successful");
-          }
-          }
+  const handleLogin = () => {
+    if (!email || !password) {
+      alert("Please fill in all fields");
+    } else {
+      alert("Login Successful");
+    }
+  };
             
   return (
     <DIV>
       <h2>Log In</h2>
-      <input data-testid="user-email" type="email" placeholder="Email" value={email}  />
+      <input 
+        data-testid="user-email" 
+        type="email" 
+        placeholder="Email" 
+        value={email} 
+        onChange={(e) => setEmail(e.target.value)}
+      />
       <input
         data-testid="user-password"
         type="password"
         placeholder="Password"
         value={password}
+        onChange={(e) => setPassword(e.target.value)}
       />
-      <button data-testid="user-login" onClick={()=>handleLogin} >Log In</button>
+      <button data-testid="user-login" onClick={handleLogin}>
+        Log In
+      </button>
     </DIV>
   );
 };
